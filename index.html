@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HCI Phase 4: Implementation - Muzammil Hussain</title>
+    <title>HCI Phase 4: Implementation - Muzammil Hussain (B23110006108)</title>
     <style>
-        /* Maintaining Layout Consistency with Phase 1 */
+        /* 1. Variables & Base Setup - Synced with Student A */
         :root {
             --primary: #2563eb;
             --dark: #0f172a;
@@ -23,6 +23,7 @@
             padding: 20px;
         }
 
+        /* 2. Layout Containers */
         .wrapper { 
             max-width: 1000px; 
             margin: 40px auto; 
@@ -39,12 +40,26 @@
             text-align: center; 
         }
 
-        .content-grid { 
+        .content { padding: 40px; }
+
+        .grid { 
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 30px; 
-            padding: 40px; 
+            margin-top: 20px; 
         }
+
+        /* 3. Typography & Components */
+        h1 { margin: 0; font-size: 2.2rem; letter-spacing: -1px; }
+        
+        h2 { 
+            border-left: 4px solid var(--primary); 
+            padding-left: 15px; 
+            font-size: 1.5rem; 
+            margin-top: 40px; 
+        }
+
+        h3 { color: var(--primary); margin-bottom: 10px; }
 
         .card { 
             background: var(--light); 
@@ -53,35 +68,51 @@
             border: 1px solid #e2e8f0; 
         }
 
-        .deployment-zone { 
-            padding: 40px; 
-            background: #f1f5f9; 
-            border-top: 1px solid #e2e8f0; 
+        .key-badge { 
+            background: var(--primary); 
+            color: white;
+            padding: 2px 8px; 
+            border-radius: 4px; 
+            font-family: monospace; 
+            font-weight: bold;
         }
+
+        /* 4. Deployment/Canvas Section */
+        .deployment-zone { 
+            background: #1e293b; 
+            padding: 40px; 
+            border-radius: 12px; 
+            margin-top: 40px; 
+            color: white; 
+        }
+
+        .canvas-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 15px; 
+        }
+
+        .canvas-header h3 { color: white; margin: 0; }
 
         canvas { 
             background: white; 
-            width: 100%; 
-            height: 400px; 
+            display: block; 
+            margin: 0 auto; 
             border-radius: 8px; 
-            border: 2px solid var(--primary); 
-            cursor: crosshair;
-        }
-
-        .key-badge {
-            background: var(--primary);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-family: monospace;
+            border: 2px solid var(--primary);
+            cursor: crosshair; 
+            width: 800px; 
+            height: 500px; 
+            max-width: 100%;
         }
 
         .footer { 
             text-align: center; 
-            padding: 20px; 
+            padding: 30px; 
             color: var(--text-muted); 
-            font-size: 0.9em; 
+            font-size: 0.85rem; 
+            border-top: 1px solid #e2e8f0; 
         }
     </style>
 </head>
@@ -89,42 +120,63 @@
 
 <div class="wrapper">
     <div class="header">
-        <h1>Phase 4: Implementation & Evaluation</h1>
-        <p><strong>Muzammil Hussain</strong> | Seat No: B23110006108</p>
+        <h1>PolyLine Editor: Phase 4</h1>
+        <p>Implementation, Deployment & Final Evaluation</p>
+        <p><strong>Muzammil Hussain</strong> | Seat No: <strong>B23110006108</strong></p>
     </div>
 
-    <div class="content-grid">
-        <div class="card">
-            <h3>Technical Challenges</h3>
-            <p>Translating the conceptual design into a functional tool required solving key logical hurdles:</p>
-            <ul>
-                <li><strong>Proximity Detection:</strong> Implementing Euclidean Distance to ensure the <span class="key-badge">M</span> and <span class="key-badge">D</span> keys target the correct vertex accurately.</li>
-                <li><strong>State Management:</strong> Controlling transitions between "Idle" and "Active" modes to prevent accidental data loss.</li>
-            </ul>
+    <div class="content">
+        <h2>Phase 4: Implementation Process</h2>
+        <p>Following the lifecycle in Figure 5.1, this phase focuses on translating conceptual models into a functional system while addressing real-world technical hurdles.</p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Technical Challenges</h3>
+                <p><strong>Proximity Logic:</strong> Implementing the Euclidean distance algorithm to ensure selecting a vertex feels natural and precise.</p>
+                <p><strong>Input Handling:</strong> Managing keyboard interrupts to toggle between drawing, moving, and deleting states without data loss.</p>
+            </div>
+            <div class="card">
+                <h3>Usability Evaluation</h3>
+                <p>Testing the prototype confirmed that the "non-destructive" requirement was met, allowing users to recover from errors using the <span class="key-badge">M</span> and <span class="key-badge">D</span> keys without restarting.</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>Heuristic Evaluation</h3>
-            <p>Testing against HCI principles to ensure a smooth user experience:</p>
-            <ul>
-                <li><strong>System Visibility:</strong> The canvas provides real-time feedback during mouse movements.</li>
-                <li><strong>Error Recovery:</strong> The <span class="key-badge">R</span> (Refresh) key allows users to reset the workspace instantly.</li>
-                <li><strong>Efficiency:</strong> Keyboard interrupts provide a fast path for experienced users.</li>
-            </ul>
+        <h2>Heuristic Evaluation & System Logic</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Interaction Controls</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><span class="key-badge">B</span> Start New Polyline</li>
+                    <li style="margin-bottom: 8px;"><span class="key-badge">M</span> Move Nearest Vertex</li>
+                    <li style="margin-bottom: 8px;"><span class="key-badge">D</span> Delete Nearest Vertex</li>
+                    <li style="margin-bottom: 8px;"><span class="key-badge">R</span> Reset Workspace</li>
+                    <li style="margin-bottom: 8px;"><span class="key-badge">Q</span> Exit Session</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Implementation Specs</h3>
+                <ul>
+                    <li>Dynamic 2D array for 100+ polylines</li>
+                    <li>Euclidean radius: 15px sensitivity</li>
+                    <li>State-driven canvas redraw loop</li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <div class="deployment-zone">
-        <h3>Live Deployed Prototype</h3>
-        <canvas id="polylineCanvas"></canvas>
-    </div>
+        <div class="deployment-zone">
+            <div class="canvas-header">
+                <h3>Deployed PolyLine Prototype</h3>
+                <div>Status: <strong style="color: #4ade80;">Functional</strong></div>
+            </div>
+            <canvas id="polylineCanvas"></canvas>
+        </div>
 
-    <div class="footer">
-        <p>Team: Bisma, Bilal, Omaima, Muzammil | HCI-CG Project 2026</p>
+        <div class="footer">
+            <p>Team: Bisma, Bilal, Omaima, Muzammil | HCI - CG Polyline Editor Project 2026</p>
+        </div>
     </div>
 </div>
 
 <script src="app.js"></script>
-
 </body>
 </html>
