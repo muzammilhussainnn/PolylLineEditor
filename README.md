@@ -20,7 +20,7 @@ https://muzammilhussainnn.github.io/PolylLineEditor/
 ## Team Repositories
 * **Requirements:** [Bisma] https://github.com/BismaLimbada/PolylineEditor
 * **Analysis:** [Muhammad Bilal Shahid](https://github.com/GfxPeak/hci-cg-PolylineEditor)
-* **Design:** [Omaima Fatima] https://github.com/omaima-13/PolyLineEditor
+* **Design:** [Omaima Fatima] https://github.com/omaima-13/HCI-PolyLineEditor
 * **Implementation:** [Muzammil Hussain]https://github.com/muzammilhussainnn/PolylLineEditor
 
 ## Challenges and Confusions
